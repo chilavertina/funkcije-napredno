@@ -165,3 +165,18 @@ const bookEW23 = book.bind(euroWings, 23);
 bookEW23('Thiery Henry');
 bookEW23('David Trezeguet');
 console.log(euroWings);
+
+//With event listeners
+
+lufthansa.planes = 300;
+lufthansa.buyPlane = function () {
+  console.log(this);
+
+  this.planes++;
+  console.log(this.planes);
+};
+
+//document.querySelector('.buy').addEventListener('click', lufthansa.buyPlane); //u ovom slucaju this iz funkcije lufthansa.buyPLane se odnosi na button .buy
+document
+  .querySelector('.buy')
+  .addEventListener('click', lufthansa.buyPlane.bind(lufthansa)); //u ovom slucaju this iz funkcije se odnosi na lufthansa
