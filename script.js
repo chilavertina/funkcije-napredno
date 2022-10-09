@@ -149,3 +149,19 @@ book.apply(airSerbia, flighData); //razlika u odnosu na call metodu je ta sto ap
 
 book.call(airSerbia, ...flighData); //ovo je isto kao i apply, samo sto se ovde koristi call metoda i spread operator
 console.log(airSerbia);
+
+//BIND metoda
+// book.call(euroWings, 23, 'Sarah Williams');
+
+const bookEW = book.bind(euroWings);
+const bookLH = book.bind(lufthansa);
+const bookAS = book.bind(airSerbia);
+
+bookEW(794, 'Milivoje Vatrogasac');
+bookLH(721, 'Marko Gobeljinjo');
+bookAS(117, 'Spic Stojkovic');
+
+const bookEW23 = book.bind(euroWings, 23);
+bookEW23('Thiery Henry');
+bookEW23('David Trezeguet');
+console.log(euroWings);
