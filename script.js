@@ -22,7 +22,7 @@ createBooking('LH123', 2);
 createBooking('LH123', 5);
 createBooking('LH123', undefined, 3); //undefined ako zelimo da preskocimo unos nekog od podataka (parametara)
 */
-
+/*
 const flight = 'LH234';
 const passenger = {
   name: 'Uros Martic',
@@ -40,10 +40,19 @@ const checkIn = function (flightNum, passengerData) {
   }
 };
 
-checkIn(flight, passenger);
-console.log(flight);
-console.log(passenger);
+// checkIn(flight, passenger);
+// console.log(flight);
+// console.log(passenger);
 
 //isto kao ovo...
-const flightNum = flight;
-const passengerData = passenger;
+// const flightNum = flight;
+// const passengerData = passenger;
+
+const newPassport = function (person) {
+  person.passport = Math.trunc(Math.random() * 10000000000);
+};
+
+newPassport(passenger);
+checkIn(flight, passenger);
+console.log(passenger);
+*/
