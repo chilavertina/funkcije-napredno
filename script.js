@@ -56,7 +56,7 @@ newPassport(passenger);
 checkIn(flight, passenger);
 console.log(passenger);
 */
-
+/*
 const oneWord = function (str) {
   return str.replaceAll(' ', '').toLowerCase();
 };
@@ -86,3 +86,66 @@ const high5 = function () {
 document.body.addEventListener('click', high5);
 
 ['Jonas', 'Martha', 'Adam'].forEach(high5);
+*/
+/*
+const pozdravljanje = function (pozdrav) {
+  return function (ime) {
+    console.log(`${pozdrav} ${ime}`);
+  };
+};
+
+const pozdravHej = pozdravljanje('Hej');
+pozdravHej('Uros');
+
+pozdravljanje('Zdravo')('Marko');
+
+//ARROW funkcija
+const arrowPozdrav = pozdrav => ime => console.log(`${pozdrav} ${ime}`);
+
+arrowPozdrav('Hej')('Mirko');
+*/
+
+const lufthansa = {
+  airline: 'Lufhansa',
+  iataCode: 'LH',
+  bookings: [],
+  // book: function() {}
+  book(flightNum, name) {
+    console.log(
+      `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
+    );
+    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
+  },
+};
+
+lufthansa.book(239, 'Uros Martic');
+lufthansa.book(523, 'Mitar Mitrovic');
+
+const euroWings = {
+  airline: 'Eurowings',
+  iataCode: 'EW',
+  bookings: [],
+};
+
+const book = lufthansa.book;
+
+//CALL method
+book.call(euroWings, 23, 'Sarah Williams');
+book.call(lufthansa, 754, 'Harry McGuire');
+console.log(euroWings);
+console.log(lufthansa);
+
+const airSerbia = {
+  airline: 'Air Serbia',
+  iataCode: 'AS',
+  bookings: [],
+};
+
+book.call(airSerbia, 632, 'Pujo Sotka');
+
+//APPLY method
+const flighData = [962, 'Dragan Stojkovic'];
+book.apply(airSerbia, flighData); //razlika u odnosu na call metodu je ta sto apply ne uzima listu argumenata nakon this, vec niz
+
+book.call(airSerbia, ...flighData); //ovo je isto kao i apply, samo sto se ovde koristi call metoda i spread operator
+console.log(airSerbia);
