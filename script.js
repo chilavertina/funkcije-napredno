@@ -56,3 +56,25 @@ newPassport(passenger);
 checkIn(flight, passenger);
 console.log(passenger);
 */
+
+const oneWord = function (str) {
+  return str.replaceAll(' ', '').toLowerCase();
+};
+
+//console.log(oneWord('Na kraj Sela zuta kuca'));
+
+const upperFirstWord = function (str) {
+  const [first, ...others] = str.split(' ');
+  return [first.toUpperCase(), ...others].join(' ');
+};
+
+//console.log(upperFirstWord('na kraj Sela zuta kuca'));
+
+const transformer = function (str, fn) {
+  console.log(`Original string: ${str}`);
+  console.log(`Transformed string: ${fn(str)}`);
+  console.log(`Transformed by: ${fn.name}`);
+};
+
+transformer('Na kraj Sela zuta kuca', upperFirstWord);
+transformer('Na kraj Sela zuta kuca', oneWord);
